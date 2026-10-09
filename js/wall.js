@@ -118,7 +118,63 @@ const DEMO_POSTS = [
 /* ─────────────────────────────────────────────
    Init
 ───────────────────────────────────────────── */
+function buildWallLayout() {
+  const page = document.getElementById('page-wall');
+  if (!page || page.querySelector('.wall-page')) return;
+  page.innerHTML = `
+<div class="wall-page">
+
+  <div class="wall-header">
+    <h1 class="wall-title">🌐 Community Wall</h1>
+    <p class="wall-sub">Announcements, events and duas from mosques across Bangladesh</p>
+  </div>
+
+  <!-- Compose -->
+  <div class="wall-compose-area" id="wall-compose-area">
+    <input id="wall-compose-input" class="wall-compose-input" type="text" placeholder="Share with the community…" />
+    <div class="wall-compose-expand" id="wall-compose-expand" style="display:none">
+      <input  id="wc-title"   class="wc-input" type="text"     placeholder="Title (optional)" />
+      <textarea id="wc-content" class="wc-textarea"             placeholder="Write your post…" rows="4"></textarea>
+      <div class="wc-row">
+        <select id="wc-category" class="wc-select">
+          <option value="community">Community</option>
+          <option value="announcement">Announcement</option>
+          <option value="event">Event</option>
+          <option value="dua">Du'a Request</option>
+          <option value="education">Education</option>
+        </select>
+        <button id="wall-compose-submit" class="btn btn-primary btn-sm">Post</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filters -->
+  <div class="wall-toolbar">
+    <div class="wall-cats" role="group">
+      <button class="wall-cat-btn active" data-cat="all">All</button>
+      <button class="wall-cat-btn" data-cat="announcement">📢 Announcements</button>
+      <button class="wall-cat-btn" data-cat="event">📅 Events</button>
+      <button class="wall-cat-btn" data-cat="dua">🤲 Du'a</button>
+      <button class="wall-cat-btn" data-cat="education">📚 Education</button>
+      <button class="wall-cat-btn" data-cat="community">🤝 Community</button>
+    </div>
+    <div class="wall-sort">
+      <button class="wall-sort-btn active" data-sort="recent">Recent</button>
+      <button class="wall-sort-btn" data-sort="popular">Popular</button>
+    </div>
+    <div class="wall-count">
+      <span id="wall-post-count">0</span> posts
+    </div>
+  </div>
+
+  <!-- Feed -->
+  <ul class="wall-feed" id="wall-feed"></ul>
+
+</div>`;
+}
+
 export function initWall() {
+  buildWallLayout();
   posts = [...DEMO_POSTS]; // In prod: fetch from Supabase
   renderWall();
   bindWallControls();
