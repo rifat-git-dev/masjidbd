@@ -19,7 +19,69 @@ let clockInterval    = null;
 /* ─────────────────────────────────────────────
    Main init
 ───────────────────────────────────────────── */
+/* ─────────────────────────────────────────────
+   Layout builder — injects page scaffold
+───────────────────────────────────────────── */
+function buildPrayerLayout() {
+  const page = document.getElementById('page-prayer');
+  if (!page || page.querySelector('.prayer-page')) return; // already built
+  page.innerHTML = `
+<div class="prayer-page">
+
+  <!-- Controls bar -->
+  <div class="prayer-controls">
+    <div class="prayer-controls-left">
+      <div class="prayer-city-selector">
+        <span class="prayer-city-icon">📍</span>
+        <select id="prayer-city-select" class="prayer-city-select-input"></select>
+      </div>
+    </div>
+    <div class="prayer-date-header">
+      <span class="prayer-date-greg"></span>
+    </div>
+  </div>
+
+  <!-- Hero: live clock + next prayer -->
+  <div id="prayer-hero" class="prayer-hero"></div>
+
+  <!-- Prayer grid -->
+  <div id="prayer-grid" class="prayer-grid"></div>
+
+  <!-- Qibla compass -->
+  <section class="qibla-section">
+    <h2 class="section-title">🧭 Qibla Direction</h2>
+    <div id="qibla-compass"></div>
+  </section>
+
+  <!-- District picker + card -->
+  <section class="zilla-section">
+    <h2 class="section-title">🗺️ All 64 Districts</h2>
+    <div class="zilla-controls">
+      <input id="zilla-search" class="zilla-search-input" type="search" placeholder="Search district…" />
+      <select id="zilla-my-district" class="zilla-my-district-select">
+        <option value="">My district…</option>
+      </select>
+    </div>
+    <div id="my-district-card" class="my-district-card"></div>
+    <div class="zilla-table-wrap">
+      <table class="zilla-table">
+        <thead>
+          <tr>
+            <th>District</th>
+            <th>Fajr</th><th>Dhuhr</th><th>Asr</th><th>Maghrib</th><th>Isha</th>
+            <th>±min</th>
+          </tr>
+        </thead>
+        <tbody id="zilla-table-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+</div>`;
+}
+
 export function initPrayer() {
+  buildPrayerLayout();
   renderCitySelector();
   renderPrayerHero();
   renderPrayerGrid();
