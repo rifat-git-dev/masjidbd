@@ -96,9 +96,145 @@ const RECENT_TRANSACTIONS = [
 const PRESET_AMOUNTS = [100, 250, 500, 1000, 2500, 5000];
 
 /* ─────────────────────────────────────────────
+   Layout builder — injects page scaffold
+───────────────────────────────────────────── */
+function buildDonateLayout() {
+  const page = document.getElementById('page-donate');
+  if (!page || page.querySelector('.donate-page')) return;
+
+  page.innerHTML = `
+<div class="donate-page">
+
+  <!-- Hero stats -->
+  <section class="donate-hero-section">
+    <h1 class="donate-hero-title">💚 Donate to Bangladesh Mosques</h1>
+    <p class="donate-hero-sub">Every taka goes directly to mosque projects across all 64 districts</p>
+    <div class="donate-stats-row">
+      <div class="donate-stat">
+        <div class="ds-value" id="donate-total-raised">—</div>
+        <div class="ds-label">Total Raised</div>
+      </div>
+      <div class="donate-stat">
+        <div class="ds-value" id="donate-donors-count">—</div>
+        <div class="ds-label">Donors</div>
+      </div>
+      <div class="donate-stat">
+        <div class="ds-value" id="donate-campaigns-count">—</div>
+        <div class="ds-label">Active Campaigns</div>
+      </div>
+    </div>
+    <div class="donate-hero-progress">
+      <div class="donate-hero-bar" id="donate-hero-bar"></div>
+    </div>
+  </section>
+
+  <!-- Campaign filter tabs -->
+  <section class="campaigns-section">
+    <div class="campaign-filters">
+      <button class="campaign-filter-btn active" data-campaign-filter="all">All</button>
+      <button class="campaign-filter-btn" data-campaign-filter="renovation">🏗️ Renovation</button>
+      <button class="campaign-filter-btn" data-campaign-filter="relief">🆘 Relief</button>
+      <button class="campaign-filter-btn" data-campaign-filter="education">📚 Education</button>
+      <button class="campaign-filter-btn" data-campaign-filter="green">🌿 Green</button>
+    </div>
+    <div class="campaigns-grid" id="campaigns-grid"></div>
+  </section>
+
+  <!-- Donation form -->
+  <section class="donation-form-section">
+    <div class="donation-form-card" id="donation-form-card">
+      <h2 class="daf-title">Make a Donation</h2>
+      <p class="daf-campaign-row">
+        Campaign: <strong id="donation-campaign-label">General Fund</strong>
+      </p>
+
+      <!-- Amount grid -->
+      <div class="daf-label">Select Amount</div>
+      <div class="donation-amount-grid" id="donation-amount-grid"></div>
+
+      <!-- Donation type -->
+      <div class="daf-label">Donation Type</div>
+      <div class="daf-type-row">
+        <button class="daf-type-btn active" data-type="sadaqah">🤲 Sadaqah</button>
+        <button class="daf-type-btn" data-type="zakat">🌙 Zakat</button>
+        <button class="daf-type-btn" data-type="fitrana">🌟 Fitrana</button>
+        <button class="daf-type-btn" data-type="lillah">💚 Lillah</button>
+      </div>
+
+      <!-- Payment method -->
+      <div class="daf-label">Payment Method</div>
+      <div class="daf-payment-row">
+        <button class="daf-payment-btn active" data-method="bkash">📱 bKash</button>
+        <button class="daf-payment-btn" data-method="nagad">💳 Nagad</button>
+        <button class="daf-payment-btn" data-method="rocket">🚀 Rocket</button>
+        <button class="daf-payment-btn" data-method="card">💵 Card</button>
+      </div>
+
+      <!-- Donor info -->
+      <div class="daf-donor-row">
+        <input id="donor-name" class="daf-input" type="text" placeholder="Your name (optional)" />
+        <label class="daf-anon-label">
+          <input id="donor-anonymous" type="checkbox" />
+          Donate anonymously
+        </label>
+      </div>
+
+      <!-- Summary + submit -->
+      <div class="daf-summary">
+        <span>You are donating <strong id="donation-summary-amount">৳500</strong></span>
+        <span>to <strong id="donation-summary-campaign">General Fund</strong></span>
+      </div>
+      <button class="btn btn-primary daf-submit-btn" id="donate-submit-btn">
+        Donate Now 🤲
+      </button>
+    </div>
+  </section>
+
+  <!-- Milestones -->
+  <section class="milestones-section">
+    <h2 class="section-title">🏆 Campaign Milestones</h2>
+    <div class="milestones-track" id="milestones-track"></div>
+  </section>
+
+  <!-- Transparency -->
+  <section class="transparency-section">
+    <h2 class="section-title">📊 Fund Transparency</h2>
+    <div class="transparency-grid">
+      <div class="transparency-card">
+        <h3 class="tc-title">Fund Breakdown</h3>
+        <div id="fund-breakdown"></div>
+      </div>
+      <div class="transparency-card">
+        <h3 class="tc-title">Recent Donations</h3>
+        <div id="recent-transactions"></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- Success modal -->
+<div class="donation-success-modal" id="donation-success-modal">
+  <div class="dsm-box">
+    <div class="dsm-icon">🤲</div>
+    <h2 class="dsm-title">JazakAllah Khair!</h2>
+    <p class="dsm-body">
+      <span id="ds-donor-name">Your</span> donation of
+      <strong id="ds-amount"></strong> has been received.
+      May Allah accept it.
+    </p>
+    <button class="btn btn-primary" onclick="document.getElementById('donation-success-modal').classList.remove('open')">
+      Ameen 🌙
+    </button>
+  </div>
+</div>`;
+}
+
+/* ─────────────────────────────────────────────
    Init
 ───────────────────────────────────────────── */
 export function initDonate() {
+  buildDonateLayout();
   renderCampaigns();
   renderDonateHero();
   renderDonationForm();
