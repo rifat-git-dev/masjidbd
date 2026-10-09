@@ -1,0 +1,619 @@
+/* ═══════════════════════════════════════════════════════════
+   MasjidBD v13 — Prayer Times Page
+   css/pages/prayer.css
+   ═══════════════════════════════════════════════════════════ */
+
+.prayer-page {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: var(--sp-8) var(--gutter) var(--sp-12);
+}
+
+/* ─────────────────────────────────────────────────────────
+   TOP CONTROLS (city + date selector)
+───────────────────────────────────────────────────────── */
+.prayer-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-8);
+  flex-wrap: wrap;
+}
+
+.prayer-controls-left {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.prayer-city-selector {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-lg);
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: all var(--dur-base);
+}
+.prayer-city-selector:hover { border-color: var(--color-brand); }
+
+.prayer-city-icon  { font-size: 18px; }
+.prayer-city-name  { font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--color-text); }
+.prayer-city-zilla { font-size: var(--text-xs); color: var(--color-text-3); }
+
+.prayer-location-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--color-surface-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-lg);
+  font-size: var(--text-xs);
+  color: var(--color-brand);
+  font-weight: var(--weight-medium);
+  cursor: pointer;
+  transition: all var(--dur-base);
+  font-family: var(--font-sans);
+}
+.prayer-location-btn:hover { background: var(--color-brand); color: #fff; }
+
+/* ─────────────────────────────────────────────────────────
+   DATE HEADER
+───────────────────────────────────────────────────────── */
+.prayer-date-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.prayer-date-greg {
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  color: var(--color-text);
+}
+
+.prayer-date-hijri {
+  font-size: var(--text-sm);
+  color: var(--color-text-3);
+  direction: ltr;
+}
+
+.prayer-date-bn {
+  font-size: var(--text-xs);
+  color: var(--color-brand);
+}
+
+/* ─────────────────────────────────────────────────────────
+   MAIN PRAYER CARD
+───────────────────────────────────────────────────────── */
+.prayer-hero-card {
+  background: linear-gradient(160deg, #0b3d2e, #0a2820);
+  border-radius: var(--r-2xl, 24px);
+  padding: var(--sp-8);
+  margin-bottom: var(--sp-6);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="glass"] .prayer-hero-card {
+  background: rgba(11,61,46,.5);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(56,181,137,.15);
+}
+
+.prayer-hero-card::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 320px; height: 320px;
+  background: radial-gradient(ellipse, rgba(56,181,137,.12) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.prayer-hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--sp-6);
+  position: relative;
+}
+
+/* Live clock */
+.prayer-clock-display {
+  display: flex;
+  flex-direction: column;
+}
+
+.prayer-clock-main {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 6vw, 5rem);
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.prayer-clock-colon {
+  animation: blinkColon 1s step-end infinite;
+}
+
+.prayer-clock-ampm {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  color: rgba(255,255,255,.45);
+  margin-left: 6px;
+  font-weight: var(--weight-normal);
+}
+
+.prayer-clock-secs {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,.3);
+  margin-top: 4px;
+}
+
+.prayer-clock-date { font-size: var(--text-sm); color: rgba(255,255,255,.55); margin-top: 4px; }
+
+/* Next prayer countdown */
+.prayer-next-block {
+  text-align: right;
+}
+
+.prayer-next-label {
+  font-size: var(--text-xs);
+  color: rgba(255,255,255,.4);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 4px;
+}
+
+.prayer-next-name {
+  font-size: 1.6rem;
+  font-weight: var(--weight-semi);
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.prayer-next-time {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--c-gold-400);
+}
+
+.prayer-countdown-timer {
+  font-size: var(--text-xs);
+  color: rgba(255,255,255,.4);
+  margin-top: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─────────────────────────────────────────────────────────
+   PRAYER TIMES GRID
+───────────────────────────────────────────────────────── */
+.prayer-times-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-3);
+  position: relative;
+}
+
+.prayer-time-card {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: var(--r-lg);
+  padding: var(--sp-4) var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: all var(--dur-base);
+  cursor: default;
+}
+
+.prayer-time-card.current {
+  background: rgba(56,181,137,.18);
+  border-color: rgba(56,181,137,.4);
+  box-shadow: 0 0 20px rgba(56,181,137,.15);
+}
+
+.prayer-time-card.upcoming { opacity: .65; }
+
+.prayer-time-card:hover { background: rgba(255,255,255,.1); }
+
+.ptc-icon    { font-size: 1.4rem; }
+.ptc-name    { font-size: var(--text-sm); color: rgba(255,255,255,.6); font-weight: var(--weight-medium); }
+.ptc-name-bn { font-size: var(--text-xs); color: rgba(255,255,255,.3); }
+.ptc-time    { font-family: var(--font-serif); font-size: 1.3rem; color: #fff; font-variant-numeric: tabular-nums; }
+.ptc-iqamah  { font-size: 11px; color: rgba(255,255,255,.35); }
+
+.ptc-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: var(--weight-medium);
+}
+
+.ptc-status.current { color: var(--c-green-300, #6ee7b7); }
+.ptc-status.current::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.ptc-status.upcoming { color: rgba(255,255,255,.3); }
+.ptc-status.done     { color: rgba(255,255,255,.2); }
+
+/* ─────────────────────────────────────────────────────────
+   64-ZILLA TABLE
+───────────────────────────────────────────────────────── */
+.prayer-zilla-section {
+  margin-top: var(--sp-8);
+}
+
+.prayer-zilla-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--sp-5);
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+}
+
+.prayer-zilla-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--color-text);
+}
+
+.prayer-zilla-filter {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.prayer-zilla-search {
+  padding: 7px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-lg);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  font-family: var(--font-sans);
+  outline: none;
+  transition: border-color var(--dur-fast);
+  width: 200px;
+}
+.prayer-zilla-search:focus { border-color: var(--color-brand); }
+
+/* Zilla table */
+.prayer-zilla-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--r-xl);
+  border: 1px solid var(--color-border);
+}
+
+.prayer-zilla-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+.prayer-zilla-table th {
+  background: var(--color-sunken);
+  color: var(--color-text-3);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  padding: 10px 14px;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.prayer-zilla-table td {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-2);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.prayer-zilla-table tr:last-child td { border-bottom: none; }
+
+.prayer-zilla-table tbody tr:hover td { background: var(--color-surface-3); }
+
+.prayer-zilla-table .dist-name { font-weight: var(--weight-medium); color: var(--color-text); }
+.prayer-zilla-table .dist-div  { font-size: var(--text-xs); color: var(--color-text-3); display: block; }
+
+.prayer-zilla-table .fajr-col   { color: #a78bfa; }
+.prayer-zilla-table .sunrise-col { color: #fb923c; }
+.prayer-zilla-table .dhuhr-col  { color: #facc15; }
+.prayer-zilla-table .asr-col    { color: #f97316; }
+.prayer-zilla-table .maghrib-col { color: #f87171; }
+.prayer-zilla-table .isha-col   { color: #818cf8; }
+
+/* ─────────────────────────────────────────────────────────
+   TRIPLE CALENDAR
+───────────────────────────────────────────────────────── */
+.prayer-calendar-section {
+  margin-top: var(--sp-8);
+}
+
+.calendar-tabs {
+  display: flex;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-full);
+  padding: 4px;
+  gap: 2px;
+  margin-bottom: var(--sp-6);
+  width: fit-content;
+}
+
+.cal-tab-btn {
+  padding: 8px 20px;
+  border-radius: var(--r-full);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-3);
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: all var(--dur-base);
+  font-family: var(--font-sans);
+}
+.cal-tab-btn.active {
+  background: var(--color-brand);
+  color: #fff;
+}
+
+.calendar-panel {
+  display: none;
+}
+.calendar-panel.active {
+  display: block;
+  animation: fadeIn var(--dur-base) var(--ease);
+}
+
+/* Calendar grid */
+.cal-wrap {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+}
+
+[data-theme="glass"] .cal-wrap {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.cal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--sp-4) var(--sp-5);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface-3);
+}
+
+.cal-nav-btn {
+  width: 34px; height: 34px;
+  border-radius: var(--r);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  color: var(--color-text-2);
+  transition: all var(--dur-fast);
+  font-family: var(--font-sans);
+}
+.cal-nav-btn:hover {
+  border-color: var(--color-brand);
+  color: var(--color-brand);
+  background: var(--color-surface-3);
+}
+
+.cal-month-year {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--color-text);
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.cal-day-label {
+  text-align: center;
+  padding: 10px 4px;
+  font-size: 11px;
+  font-weight: var(--weight-semi);
+  color: var(--color-text-3);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cal-day-label.friday { color: var(--color-brand); }
+
+.cal-cell {
+  padding: 8px 4px;
+  text-align: center;
+  min-height: 68px;
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  transition: background var(--dur-fast);
+  position: relative;
+  cursor: pointer;
+}
+.cal-cell:nth-child(7n) { border-right: none; }
+
+.cal-cell:hover { background: var(--color-surface-3); }
+
+.cal-cell.today .cal-cell-num {
+  background: var(--color-brand);
+  color: #fff;
+  border-radius: 50%;
+}
+
+.cal-cell.other-month { opacity: .3; }
+
+.cal-cell.friday .cal-cell-num { color: var(--color-brand); }
+
+.cal-cell-num {
+  display: inline-flex;
+  width: 30px; height: 30px;
+  align-items: center; justify-content: center;
+  border-radius: 50%;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text);
+  margin-bottom: 2px;
+  transition: all var(--dur-fast);
+}
+
+.cal-cell-sub {
+  font-size: 9px;
+  color: var(--color-text-3);
+  line-height: 1.2;
+  display: block;
+}
+
+.cal-cell-event {
+  position: absolute;
+  bottom: 3px; left: 50%;
+  transform: translateX(-50%);
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--c-gold-500);
+}
+
+.cal-cell-event-label {
+  font-size: 9px;
+  color: var(--c-gold-600);
+  text-align: center;
+  line-height: 1.1;
+  padding: 0 2px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* Islamic events list under calendar */
+.cal-events-list {
+  padding: var(--sp-4) var(--sp-5);
+  border-top: 1px solid var(--color-border);
+}
+
+.cal-events-title {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semi);
+  color: var(--color-text-3);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: var(--sp-3);
+}
+
+.cal-event-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: 7px 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--text-sm);
+}
+.cal-event-item:last-child { border-bottom: none; }
+.cal-event-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--c-gold-500);
+  flex-shrink: 0;
+}
+.cal-event-date { color: var(--color-text-3); flex-shrink: 0; font-size: var(--text-xs); min-width: 80px; }
+.cal-event-name { color: var(--color-text); font-weight: var(--weight-medium); }
+.cal-event-hijri { color: var(--color-text-3); font-size: var(--text-xs); direction: ltr; }
+
+/* ─────────────────────────────────────────────────────────
+   QIBLA DIRECTION CARD
+───────────────────────────────────────────────────────── */
+.qibla-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-xl);
+  padding: var(--sp-6);
+  margin-top: var(--sp-6);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-6);
+}
+
+[data-theme="glass"] .qibla-card {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+}
+
+.qibla-compass {
+  width: 120px; height: 120px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.qibla-compass-ring {
+  width: 100%; height: 100%;
+  border: 3px solid var(--color-border);
+  border-radius: 50%;
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.qibla-needle {
+  width: 4px; height: 50px;
+  background: linear-gradient(to bottom, var(--color-danger) 50%, var(--color-brand) 50%);
+  border-radius: var(--r-full);
+  transform-origin: center 50%;
+  transition: transform 1.5s cubic-bezier(.34,1.56,.64,1);
+}
+
+.qibla-n { position: absolute; top: 4px; left: 50%; transform: translateX(-50%); font-size: 10px; font-weight: 700; color: var(--color-danger); }
+.qibla-s { position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%); font-size: 10px; color: var(--color-text-3); }
+.qibla-e { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: 10px; color: var(--color-text-3); }
+.qibla-w { position: absolute; left: 6px; top: 50%; transform: translateY(-50%); font-size: 10px; color: var(--color-text-3); }
+
+.qibla-info { flex: 1; }
+.qibla-title { font-size: var(--text-base); font-weight: var(--weight-semi); color: var(--color-text); margin-bottom: var(--sp-2); }
+.qibla-degree { font-family: var(--font-serif); font-size: 2rem; color: var(--color-brand); }
+.qibla-sub { font-size: var(--text-sm); color: var(--color-text-2); line-height: 1.5; }
+.qibla-note { font-size: var(--text-xs); color: var(--color-text-3); margin-top: var(--sp-2); }
+
+/* Prayer notification banner */
+.prayer-notify-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  background: var(--color-surface-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-lg);
+  padding: var(--sp-3) var(--sp-4);
+  margin-top: var(--sp-6);
+  font-size: var(--text-sm);
+}
+
+.prayer-notify-icon { font-size: 1.4rem; flex-shrink: 0; }
+.prayer-notify-text { flex: 1; color: var(--color-text-2); }
+.prayer-notify-text strong { color: var(--color-text); }

@@ -1,0 +1,257 @@
+/* Prayer page — hero, grid, zilla table extras */
+
+/* ── Prayer Hero ── */
+.prayer-hero-wrap {
+  background: linear-gradient(135deg, var(--c-forest-900) 0%, var(--c-forest-700) 100%);
+  border-radius: 20px;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.prayer-hero-wrap::before {
+  content: '🕌';
+  position: absolute;
+  right: -10px;
+  bottom: -20px;
+  font-size: 120px;
+  opacity: .06;
+  pointer-events: none;
+}
+.ph-clock {}
+.ph-time {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-family: var(--ff-serif);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.02em;
+}
+.ph-date  { font-size: 14px; opacity: .8; margin-top: 4px; }
+.ph-city  { font-size: 12px; opacity: .6; margin-top: 4px; }
+.ph-next  { text-align: center; }
+.ph-next-label  { font-size: 12px; opacity: .7; text-transform: uppercase; letter-spacing: .08em; }
+.ph-next-name   { font-size: 1.6rem; font-family: var(--ff-serif); font-weight: 700; }
+.ph-next-countdown {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--c-gold-400);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.02em;
+}
+
+/* ── Prayer Grid ── */
+#prayer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.pg-card {
+  background: var(--c-surface-1);
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+  padding: 20px 16px;
+  text-align: center;
+  position: relative;
+  transition: box-shadow .2s, transform .2s;
+}
+.pg-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px var(--c-shadow); }
+.pg-card.current {
+  border-color: var(--c-gold-500);
+  background: linear-gradient(135deg, var(--c-forest-900), var(--c-forest-700));
+  color: #fff;
+}
+.pgc-icon  { font-size: 28px; margin-bottom: 6px; }
+.pgc-name  { font-weight: 700; font-size: 15px; }
+.pgc-name-ar { font-family: var(--ff-arabic); font-size: 13px; opacity: .7; margin-bottom: 4px; }
+.pgc-time  { font-size: 1.5rem; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--c-gold-500); }
+.pg-card.current .pgc-time { color: var(--c-gold-300); }
+.pgc-iqamah { font-size: 11px; opacity: .65; margin-top: 4px; }
+.pgc-pulse-dot {
+  position: absolute;
+  top: 10px; right: 10px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--c-gold-400);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* ── Zilla Table ── */
+.zilla-section { margin-top: 32px; }
+.zilla-search-wrap {
+  display: flex; gap: 12px; margin-bottom: 16px; align-items: center;
+}
+.zilla-search-wrap input {
+  flex: 1; padding: 10px 16px; border-radius: 10px;
+  border: 1px solid var(--c-border); background: var(--c-surface-1);
+  font-size: 14px; color: var(--c-text);
+}
+.zilla-table-wrap { overflow-x: auto; border-radius: 14px; border: 1px solid var(--c-border); }
+#zilla-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+#zilla-table thead th {
+  background: var(--c-forest-900);
+  color: #fff;
+  padding: 10px 12px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  white-space: nowrap;
+  position: sticky; top: 0;
+}
+#zilla-table-body tr:nth-child(even) { background: var(--c-surface-2); }
+#zilla-table-body tr.current-zilla { background: var(--c-gold-900) !important; }
+#zilla-table-body td { padding: 8px 12px; border-bottom: 1px solid var(--c-border); white-space: nowrap; }
+.zt-name  { font-weight: 600; min-width: 130px; }
+.zt-time  { font-variant-numeric: tabular-nums; text-align: center; }
+.zt-fajr  { color: var(--c-forest-500); }
+.zt-zuhr  { color: var(--c-gold-600); }
+.zt-asr   { color: #6366F1; }
+.zt-maghrib { color: #EF4444; }
+.zt-isha  { color: var(--c-forest-700); }
+.zt-offset { color: var(--c-text-muted); font-size: 11px; text-align: center; }
+
+/* My district card */
+#my-district-card {
+  background: var(--c-surface-1);
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+.mdc-header {
+  display: flex; justify-content: space-between; align-items: center;
+  font-weight: 700; margin-bottom: 12px;
+}
+.mdc-times { display: flex; flex-direction: column; gap: 6px; }
+.mdc-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 6px 8px; border-radius: 8px; font-size: 13px;
+}
+.mdc-row.current { background: var(--c-gold-900); color: var(--c-gold-400); }
+
+/* Qibla compass */
+.qibla-wrap { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.compass-ring {
+  width: 160px; height: 160px; border-radius: 50%;
+  border: 3px solid var(--c-border);
+  position: relative;
+  background: radial-gradient(circle, var(--c-surface-2) 60%, var(--c-surface-3));
+  flex-shrink: 0;
+}
+.compass-rose { position: absolute; inset: 0; }
+.compass-rose span {
+  position: absolute; font-size: 11px; font-weight: 700; color: var(--c-text-muted);
+}
+.cr-n { top: 6px; left: 50%; transform: translateX(-50%); color: #EF4444; }
+.cr-s { bottom: 6px; left: 50%; transform: translateX(-50%); }
+.cr-e { right: 8px; top: 50%; transform: translateY(-50%); }
+.cr-w { left: 8px; top: 50%; transform: translateY(-50%); }
+.compass-needle {
+  position: absolute;
+  inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  transform-origin: center center;
+  transition: transform 1s ease;
+}
+.cn-arrow {
+  position: absolute;
+  width: 3px; height: 50px;
+  background: var(--c-gold-500);
+  bottom: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+.cn-arrow::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 0; height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 14px solid var(--c-gold-500);
+}
+.cn-kaaba {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -100%);
+  margin-top: -28px;
+  font-size: 18px;
+}
+.qibla-info { flex: 1; min-width: 160px; }
+.qi-bearing  { font-size: 1.4rem; font-weight: 700; color: var(--c-gold-500); }
+.qi-distance { font-size: 13px; color: var(--c-text-muted); margin-top: 4px; }
+.qi-city     { font-size: 12px; color: var(--c-text-muted); margin-top: 2px; }
+
+/* Home page features */
+#home-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+.feat-card {
+  background: var(--c-surface-1);
+  border: 1px solid var(--c-border);
+  border-radius: 16px;
+  padding: 24px 20px;
+  text-decoration: none;
+  color: var(--c-text);
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+  display: block;
+}
+.feat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px var(--c-shadow);
+  border-color: var(--c-gold-500);
+  color: var(--c-text);
+}
+.feat-icon  { font-size: 32px; margin-bottom: 10px; display: block; }
+.feat-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.feat-desc  { font-size: 13px; color: var(--c-text-muted); line-height: 1.5; }
+
+/* Stats section */
+#home-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.stat-card {
+  background: var(--c-surface-1);
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+  padding: 20px 16px;
+  text-align: center;
+  animation: fadeInDown .5s ease both;
+}
+.stat-icon  { font-size: 28px; margin-bottom: 6px; }
+.stat-value { font-size: 1.8rem; font-weight: 800; color: var(--c-forest-600); font-variant-numeric: tabular-nums; }
+.stat-label { font-size: 12px; color: var(--c-text-muted); margin-top: 4px; }
+
+/* Hero prayer card */
+#home-prayer-card { padding: 0; }
+.hpc-next { text-align: center; margin-bottom: 16px; }
+.hpc-next-label { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; opacity: .7; }
+.hpc-next-name  { font-size: 1.4rem; font-weight: 700; font-family: var(--ff-serif); }
+.hpc-countdown  { font-size: 2rem; font-weight: 800; color: var(--c-gold-400); }
+.hpc-list { display: flex; flex-direction: column; gap: 6px; }
+.hpc-row  { display: flex; justify-content: space-between; padding: 6px 8px; border-radius: 8px; font-size: 13px; }
+.hpc-row.current { background: rgba(255,255,255,.1); font-weight: 700; }
+
+/* Wall teaser */
+#home-wall-teaser { padding: 0; }
+.wall-teaser-row {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 10px 0; border-bottom: 1px solid var(--c-border);
+}
+.wall-teaser-row:last-child { border-bottom: none; }
+.wtr-icon  { font-size: 20px; flex-shrink: 0; padding-top: 2px; }
+.wtr-title { font-size: 13px; font-weight: 600; }
+.wtr-meta  { font-size: 11px; color: var(--c-text-muted); margin-top: 2px; }

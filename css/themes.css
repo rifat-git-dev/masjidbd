@@ -1,0 +1,280 @@
+/* ═══════════════════════════════════════════════════════════
+   MasjidBD v13 — Theme System
+   css/themes.css
+   Three themes: light (default), dark, glass
+   Applied via data-theme="light|dark|glass" on <html>
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Theme transition (smooth switching) ────────────────── */
+html {
+  --theme-transition: background-color var(--dur-slow) var(--ease),
+                      color var(--dur-slow) var(--ease),
+                      border-color var(--dur-slow) var(--ease),
+                      box-shadow var(--dur-slow) var(--ease);
+}
+
+/* Apply transition to all relevant properties on theme change */
+html.theme-changing *,
+html.theme-changing *::before,
+html.theme-changing *::after {
+  transition: var(--theme-transition) !important;
+}
+
+/* ─────────────────────────────────────────────────────────
+   DARK THEME
+───────────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --c-forest-800: #1d7a5c;
+  --c-forest-700: #2a9970;
+  --c-forest-600: #38b589;
+  --c-gold-600:   #d4b05e;
+  --c-gold-500:   #e8c97a;
+  --c-gold-50:    rgba(184, 148, 58, 0.10);
+
+  --color-brand:          #38b589;
+  --color-brand-hover:    #2a9970;
+  --color-brand-subtle:   rgba(29, 122, 92, 0.12);
+  --color-accent:         #d4b05e;
+  --color-accent-light:   #e8c97a;
+  --color-accent-subtle:  rgba(184, 148, 58, 0.10);
+
+  --color-bg:          #0b1a12;
+  --color-surface:     #112219;
+  --color-surface-2:   #162c20;
+  --color-surface-3:   rgba(245, 239, 224, 0.05);
+  --color-sunken:      #0d1f17;
+  --color-overlay:     rgba(0, 0, 0, 0.65);
+
+  --color-text:        #e8f0ec;
+  --color-text-2:      #c5d5cb;
+  --color-text-3:      #7a9b8a;
+  --color-text-4:      #4e6a5a;
+  --color-text-inv:    #0b1a12;
+  --color-text-brand:  #38b589;
+  --color-text-accent: #d4b05e;
+  --color-text-link:   #38b589;
+  --color-text-danger: #e06050;
+
+  --color-border:      rgba(29, 122, 92, 0.18);
+  --color-border-2:    rgba(184, 148, 58, 0.22);
+  --color-border-3:    rgba(29, 122, 92, 0.09);
+  --color-border-focus:#38b589;
+
+  --color-danger:      #e06050;
+  --color-danger-bg:   rgba(224, 96, 80, 0.12);
+  --color-success:     #38b589;
+  --color-success-bg:  rgba(56, 181, 137, 0.10);
+  --color-warning:     #d4b05e;
+  --color-warning-bg:  rgba(212, 176, 94, 0.10);
+  --color-info:        #4da6d5;
+  --color-info-bg:     rgba(77, 166, 213, 0.10);
+
+  --nav-bg:     rgba(11, 26, 18, 0.95);
+  --nav-border: rgba(29, 122, 92, 0.15);
+  --tabbar-bg:  #112219;
+
+  --shadow-xs: 0 1px 3px rgba(0,0,0,.20);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.25);
+  --shadow:    0 4px 16px rgba(0,0,0,.30);
+  --shadow-md: 0 8px 32px rgba(0,0,0,.35);
+  --shadow-lg: 0 16px 56px rgba(0,0,0,.40);
+  --shadow-xl: 0 24px 80px rgba(0,0,0,.45);
+  --shadow-inner: inset 0 2px 8px rgba(0,0,0,.20);
+  --shadow-gold:  0 4px 24px rgba(212,176,94,.12);
+
+  --glass-bg:     rgba(17, 34, 25, 0.80);
+  --glass-border: rgba(29, 122, 92, 0.22);
+  --glass-blur:   saturate(150%) blur(20px);
+  --glass-shadow: 0 8px 32px rgba(0,0,0,.30),
+                  inset 0 1px 0 rgba(56,181,137,0.10);
+}
+
+/* ─────────────────────────────────────────────────────────
+   GLASS THEME
+───────────────────────────────────────────────────────── */
+[data-theme="glass"] {
+  /* Gradient bg on html/body via background shorthand */
+  --color-bg: linear-gradient(145deg,
+      #071510 0%,
+      #0a1f14 30%,
+      #0d2a1e 60%,
+      #071510 100%
+    );
+
+  --color-surface:   rgba(255, 255, 255, 0.06);
+  --color-surface-2: rgba(255, 255, 255, 0.09);
+  --color-surface-3: rgba(255, 255, 255, 0.03);
+  --color-sunken:    rgba(255, 255, 255, 0.02);
+  --color-overlay:   rgba(0, 0, 0, 0.70);
+
+  --color-brand:          #38b589;
+  --color-brand-hover:    #4acba0;
+  --color-brand-subtle:   rgba(56, 181, 137, 0.12);
+  --color-accent:         #d4b05e;
+  --color-accent-light:   #e8c97a;
+  --color-accent-subtle:  rgba(212, 176, 94, 0.12);
+
+  --color-text:        rgba(255, 255, 255, 0.92);
+  --color-text-2:      rgba(255, 255, 255, 0.72);
+  --color-text-3:      rgba(255, 255, 255, 0.48);
+  --color-text-4:      rgba(255, 255, 255, 0.28);
+  --color-text-inv:    #071510;
+  --color-text-brand:  #38b589;
+  --color-text-accent: #d4b05e;
+  --color-text-link:   #6ecfaa;
+  --color-text-danger: #ff7b6b;
+
+  --color-border:      rgba(255, 255, 255, 0.10);
+  --color-border-2:    rgba(184, 148, 58, 0.28);
+  --color-border-3:    rgba(255, 255, 255, 0.06);
+  --color-border-focus:#38b589;
+
+  --color-danger:      #ff7b6b;
+  --color-danger-bg:   rgba(255, 123, 107, 0.12);
+  --color-success:     #38b589;
+  --color-success-bg:  rgba(56, 181, 137, 0.12);
+  --color-warning:     #d4b05e;
+  --color-warning-bg:  rgba(212, 176, 94, 0.12);
+  --color-info:        #5ab4e0;
+  --color-info-bg:     rgba(90, 180, 224, 0.12);
+
+  --nav-bg:     rgba(5, 15, 10, 0.65);
+  --nav-border: rgba(255, 255, 255, 0.08);
+  --tabbar-bg:  rgba(5, 15, 10, 0.55);
+
+  --shadow-xs: 0 1px 4px rgba(0,0,0,.25);
+  --shadow-sm: 0 2px 10px rgba(0,0,0,.30);
+  --shadow:    0 4px 20px rgba(0,0,0,.35);
+  --shadow-md: 0 8px 36px rgba(0,0,0,.40);
+  --shadow-lg: 0 16px 60px rgba(0,0,0,.45);
+  --shadow-xl: 0 24px 88px rgba(0,0,0,.50);
+  --shadow-inner: inset 0 2px 8px rgba(0,0,0,.25);
+  --shadow-gold:  0 4px 28px rgba(212,176,94,.18);
+
+  --glass-bg:     rgba(255, 255, 255, 0.07);
+  --glass-border: rgba(255, 255, 255, 0.13);
+  --glass-blur:   saturate(200%) blur(24px);
+  --glass-shadow: 0 8px 32px rgba(0,0,0,.30),
+                  inset 0 1px 0 rgba(255,255,255,0.08),
+                  inset 0 -1px 0 rgba(0,0,0,0.10);
+}
+
+/* Glass theme body needs the gradient background */
+[data-theme="glass"] body {
+  background: linear-gradient(145deg,
+    #071510 0%,
+    #0a1f14 30%,
+    #0d2a1e 60%,
+    #071510 100%
+  );
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* ─────────────────────────────────────────────────────────
+   GLASS CARD — applied as a utility class .glass
+   on cards/panels to get the frosted glass effect
+───────────────────────────────────────────────────────── */
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+}
+
+/* On light theme, glass class still works for special cards */
+[data-theme="light"] .glass {
+  background: rgba(255, 255, 255, 0.80);
+  border: 1px solid rgba(255, 255, 255, 0.60);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* ── Theme toggle button ────────────────────────────────── */
+.theme-toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: var(--sp-1) var(--sp-2);
+  background: var(--color-surface-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-full);
+  cursor: pointer;
+  transition: all var(--dur-base) var(--ease);
+}
+
+.theme-btn {
+  width: 30px;
+  height: 28px;
+  border-radius: var(--r-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--dur-base) var(--ease);
+  color: var(--color-text-3);
+}
+
+.theme-btn:hover {
+  background: var(--color-surface-2);
+  color: var(--color-text);
+}
+
+.theme-btn.active {
+  background: var(--color-brand);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="glass"] .theme-btn.active {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+/* ── Specific overrides for glass nav backdrop ──────────── */
+[data-theme="glass"] nav {
+  backdrop-filter: saturate(180%) blur(24px);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
+}
+
+/* ── Hero section background by theme ──────────────────── */
+.hero { background: var(--c-forest-800); }
+[data-theme="dark"]  .hero { background: var(--c-forest-900); }
+[data-theme="glass"] .hero { background: rgba(5, 20, 13, 0.70); backdrop-filter: blur(4px); }
+
+/* ── Card base by theme ─────────────────────────────────── */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--dur-base) var(--ease),
+              border-color var(--dur-base) var(--ease),
+              transform var(--dur-base) var(--ease);
+}
+
+[data-theme="glass"] .card {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border-2);
+  transform: translateY(-2px);
+}
+
+[data-theme="glass"] .card:hover {
+  background: rgba(255,255,255,0.10);
+  box-shadow: var(--shadow-md);
+}

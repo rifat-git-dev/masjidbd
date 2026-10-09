@@ -1,0 +1,197 @@
+/* ═══════════════════════════════════════════════════════════
+   MasjidBD v13 — Responsive / Mobile
+   css/responsive.css
+   Breakpoints: 1024px (tablet), 768px (large mobile), 640px (mobile)
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────
+   TABLET — ≤1024px
+───────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  :root {
+    --gutter: var(--sp-6);
+  }
+
+  /* Nav */
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+
+  /* Hero */
+  .hero-inner { grid-template-columns: 1fr; gap: var(--sp-10); }
+  .prayer-card-hero { max-width: 440px; }
+
+  /* Stats */
+  .stats-inner { grid-template-columns: repeat(3, 1fr); }
+
+  /* Overview */
+  .overview-grid { grid-template-columns: 1fr; }
+
+  /* Features */
+  .features-shell { grid-template-columns: 1fr; }
+  .features-cats  { display: none; }
+  .features-grid  { grid-template-columns: repeat(2, 1fr); }
+
+  /* Map */
+  .map-wrap { grid-template-columns: 1fr; }
+  .map-side  { max-height: 280px; }
+  .mosque-list { max-height: 180px; }
+  .map-area  { min-height: 400px; }
+
+  /* Donation */
+  .donation-layout { grid-template-columns: 1fr; }
+
+  /* Registration */
+  .reg-layout { grid-template-columns: 1fr; }
+
+  /* Prayer page */
+  .prayer-hero-grid { grid-template-columns: 1fr !important; }
+  .prayer-hero-grid > div:first-child {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+  }
+
+  /* Triple calendar */
+  .tcal-3col-header,
+  .tcal-3col-body { grid-template-columns: 1fr; }
+  .tcal-3col-panel { border-right: none; border-bottom: 1px solid var(--color-border); }
+  .tcal-3col-panel:last-child { border-bottom: none; }
+
+  /* Dashboard */
+  .dash-body { grid-template-columns: 1fr; }
+  .dash-nav  { display: none; }
+
+  /* Wall */
+  .wall-layout { grid-template-columns: 1fr; }
+  .wall-sidebar { display: none; }
+
+  /* Footer */
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: var(--sp-8); }
+}
+
+/* ─────────────────────────────────────────────────────────
+   LARGE MOBILE — ≤768px
+───────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Role badge — text hidden */
+  .role-name, .role-label { display: none; }
+
+  /* Prayer clock */
+  #clockH, #clockM { font-size: 52px !important; }
+  #clockS { font-size: 26px !important; }
+
+  /* Prayer card */
+  .prayer-card-hero { max-width: 100%; }
+
+  /* Zilla table */
+  .zilla-table { font-size: 12px; }
+  .zilla-table thead th,
+  .zilla-table tbody td { padding: 8px 10px; }
+
+  /* Map area */
+  .map-area { min-height: 320px; }
+
+  /* Form 2-col → 1-col */
+  .form-2col { grid-template-columns: 1fr; }
+
+  /* KPIs */
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Features grid */
+  .features-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ─────────────────────────────────────────────────────────
+   MOBILE — ≤640px
+───────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  :root {
+    --gutter: var(--gutter-sm);
+    --nav-h:  58px;
+  }
+
+  /* Section padding */
+  .section { padding: var(--sp-14) 0; }
+
+  /* Hero */
+  .hero-inner { padding: var(--sp-12) var(--gutter-sm); }
+  .hero h1 { font-size: clamp(2rem, 9vw, 2.75rem); }
+
+  /* Stats strip — 2 col */
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .stat:nth-child(3) { border-right: 1px solid var(--color-border); }
+
+  /* Features — single column */
+  .features-grid { grid-template-columns: 1fr; }
+
+  /* Tab bar */
+  .tabs-inner { padding: 0 var(--sp-3); }
+  .tab-btn { padding: 11px 12px; font-size: 12px; }
+
+  /* Prayer hero clock */
+  #clockH, #clockM { font-size: 48px !important; }
+  #clockS { font-size: 20px !important; }
+
+  /* All cities grid */
+  #allCitiesGrid { grid-template-columns: 1fr !important; }
+
+  /* Zilla */
+  .zilla-tabs { gap: var(--sp-1); }
+  .zilla-div-btn { padding: 6px 10px; font-size: 11px; }
+
+  /* Donation */
+  .don-types { grid-template-columns: 1fr 1fr; }
+  .pills { flex-wrap: wrap; }
+
+  /* Modals */
+  .modal-box { padding: var(--sp-6); }
+
+  /* Toast */
+  .toast { max-width: calc(100vw - 32px); }
+
+  /* Chat window */
+  .chat-window { width: calc(100vw - 32px); right: var(--sp-4); }
+
+  /* Footer */
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+
+  /* Map popup */
+  .mosque-popup { max-width: calc(100% - 24px); }
+
+  /* Demo bar note */
+  .demo-note { display: none; }
+
+  /* Govt dashboard stats */
+  .gd-stats { grid-template-columns: repeat(2, 1fr); }
+  .gd-stats .gd-stat:last-child { grid-column: 1 / -1; }
+
+  /* KPI grid — single column on very small screens */
+  .kpi-grid { grid-template-columns: 1fr 1fr; }
+
+  /* Headings */
+  .sec-h { font-size: clamp(1.5rem, 7vw, 2rem); }
+}
+
+/* ─────────────────────────────────────────────────────────
+   EXTRA SMALL — ≤380px
+───────────────────────────────────────────────────────── */
+@media (max-width: 380px) {
+  .kpi-grid { grid-template-columns: 1fr; }
+  .don-types { grid-template-columns: 1fr; }
+  #clockH, #clockM { font-size: 40px !important; }
+  .hero h1 { font-size: 1.9rem; }
+}
+
+/* ─────────────────────────────────────────────────────────
+   PRINT
+───────────────────────────────────────────────────────── */
+@media print {
+  .govbar, nav, .tabs-bar, .demo-bar,
+  .chat-fab, .chat-window,
+  .theme-toggle, .hamburger { display: none !important; }
+
+  body { background: white; color: black; font-size: 12pt; }
+  .container { max-width: 100%; padding: 0; }
+  .section { padding: 24pt 0; }
+  .card { box-shadow: none; border: 1pt solid #ccc; }
+}

@@ -1,0 +1,187 @@
+/* ═══════════════════════════════════════════════════════════
+   MasjidBD v13 — Design Tokens
+   css/variables.css
+   All themes inherit from here. Never put layout or
+   component styles in this file — tokens only.
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Raw colour palette ────────────────────────────────── */
+  --c-forest-900: #051a10;
+  --c-forest-800: #0B3D2E;
+  --c-forest-700: #145c45;
+  --c-forest-600: #1d7a5c;
+  --c-forest-500: #2a9970;
+  --c-forest-400: #38b589;
+  --c-forest-300: #6ecfaa;
+  --c-forest-200: #a8e4cc;
+  --c-forest-100: #d4f4ea;
+  --c-forest-50:  #edfaf5;
+
+  --c-gold-900: #3d2800;
+  --c-gold-800: #6b4600;
+  --c-gold-700: #8f5f00;
+  --c-gold-600: #B8943A;
+  --c-gold-500: #d4b05e;
+  --c-gold-400: #e8c97a;
+  --c-gold-300: #f0d898;
+  --c-gold-200: #f7e9c0;
+  --c-gold-100: #fdf3dc;
+  --c-gold-50:  #fef9f0;
+
+  --c-red-700:  #9b2335;
+  --c-red-600:  #c0392b;
+  --c-red-100:  #fcecea;
+  --c-blue-700: #145c85;
+  --c-blue-600: #1a6090;
+  --c-blue-100: #eaf4fb;
+  --c-purple-600: #8e44ad;
+  --c-purple-100: #f5eafb;
+
+  /* ── Semantic tokens — Light theme (default) ────────────── */
+  --color-brand:          var(--c-forest-800);
+  --color-brand-hover:    var(--c-forest-700);
+  --color-brand-active:   var(--c-forest-600);
+  --color-brand-subtle:   var(--c-forest-50);
+  --color-accent:         var(--c-gold-600);
+  --color-accent-light:   var(--c-gold-500);
+  --color-accent-subtle:  var(--c-gold-50);
+
+  /* Surfaces */
+  --color-bg:          #F2EFE8;
+  --color-surface:     #FFFFFF;
+  --color-surface-2:   #F9F8F5;
+  --color-surface-3:   #F5EFE0;
+  --color-sunken:      #EBE2CC;
+  --color-overlay:     rgba(5, 26, 16, 0.55);
+
+  /* Text */
+  --color-text:        #0f1a15;
+  --color-text-2:      #2a3830;
+  --color-text-3:      #6b7a73;
+  --color-text-4:      #9aab9e;
+  --color-text-inv:    #FFFFFF;
+  --color-text-brand:  var(--c-forest-800);
+  --color-text-accent: var(--c-gold-600);
+  --color-text-link:   var(--c-forest-600);
+  --color-text-danger: var(--c-red-600);
+
+  /* Borders */
+  --color-border:      rgba(11, 61, 46, 0.10);
+  --color-border-2:    rgba(184, 148, 58, 0.26);
+  --color-border-3:    rgba(11, 61, 46, 0.06);
+  --color-border-focus:var(--c-forest-800);
+
+  /* Status */
+  --color-danger:      var(--c-red-600);
+  --color-danger-bg:   var(--c-red-100);
+  --color-success:     var(--c-forest-600);
+  --color-success-bg:  var(--c-forest-50);
+  --color-warning:     var(--c-gold-600);
+  --color-warning-bg:  var(--c-gold-50);
+  --color-info:        var(--c-blue-600);
+  --color-info-bg:     var(--c-blue-100);
+
+  /* Nav */
+  --nav-bg:            rgba(255, 255, 255, 0.97);
+  --nav-border:        rgba(11, 61, 46, 0.09);
+  --tabbar-bg:         #FFFFFF;
+
+  /* ── Shadows ────────────────────────────────────────────── */
+  --shadow-xs: 0 1px 3px rgba(11,61,46,.05);
+  --shadow-sm: 0 2px 8px rgba(11,61,46,.07);
+  --shadow:    0 4px 16px rgba(11,61,46,.09);
+  --shadow-md: 0 8px 32px rgba(11,61,46,.11);
+  --shadow-lg: 0 16px 56px rgba(11,61,46,.13);
+  --shadow-xl: 0 24px 80px rgba(11,61,46,.17);
+  --shadow-inner: inset 0 2px 8px rgba(11,61,46,.05);
+  --shadow-gold:  0 4px 24px rgba(184,148,58,.18);
+
+  /* ── Glass ──────────────────────────────────────────────── */
+  --glass-bg:     rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.55);
+  --glass-blur:   saturate(180%) blur(20px);
+  --glass-shadow: 0 8px 32px rgba(11,61,46,.10),
+                  inset 0 1px 0 rgba(255,255,255,0.60);
+
+  /* ── Typography ─────────────────────────────────────────── */
+  --font-sans:    'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-serif:   'DM Serif Display', Georgia, serif;
+  --font-arabic:  'Amiri', serif;
+  --font-bengali: 'Hind Siliguri', 'DM Sans', sans-serif;
+  --font-mono:    ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+
+  /* Scale (rem, 16px root) */
+  --text-xs:   0.6875rem;   /* 11px */
+  --text-sm:   0.75rem;     /* 12px */
+  --text-base: 0.9375rem;   /* 15px */
+  --text-md:   1.0625rem;   /* 17px */
+  --text-lg:   1.1875rem;   /* 19px */
+  --text-xl:   1.375rem;    /* 22px */
+  --text-2xl:  1.625rem;    /* 26px */
+  --text-3xl:  2rem;        /* 32px */
+  --text-4xl:  2.5rem;      /* 40px */
+  --text-5xl:  3.25rem;     /* 52px */
+  --text-hero: clamp(2.25rem, 5vw, 4rem);
+
+  --leading-none:    1;
+  --leading-tight:   1.15;
+  --leading-snug:    1.35;
+  --leading-normal:  1.60;
+  --leading-relaxed: 1.75;
+
+  --weight-light:  300;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semi:   600;
+  --weight-bold:   700;
+
+  /* ── Spacing (4px base grid) ────────────────────────────── */
+  --sp-1:  4px;   --sp-2:  8px;   --sp-3:  12px;
+  --sp-4:  16px;  --sp-5:  20px;  --sp-6:  24px;
+  --sp-7:  28px;  --sp-8:  32px;  --sp-10: 40px;
+  --sp-12: 48px;  --sp-14: 56px;  --sp-16: 64px;
+  --sp-20: 80px;  --sp-24: 96px;
+
+  /* ── Border radius ──────────────────────────────────────── */
+  --r-xs:   3px;
+  --r-sm:   5px;
+  --r:      8px;
+  --r-md:   12px;
+  --r-lg:   16px;
+  --r-xl:   22px;
+  --r-2xl:  30px;
+  --r-full: 9999px;
+
+  /* ── Motion ─────────────────────────────────────────────── */
+  --ease:        cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out:    cubic-bezier(0, 0, 0.2, 1);
+  --ease-in:     cubic-bezier(0.4, 0, 1, 1);
+  --dur-fast:    100ms;
+  --dur-base:    180ms;
+  --dur-slow:    320ms;
+  --dur-slower:  480ms;
+
+  /* ── Layout ─────────────────────────────────────────────── */
+  --max-w:      1200px;
+  --max-w-sm:   640px;
+  --max-w-md:   768px;
+  --max-w-lg:   1024px;
+  --nav-h:      64px;
+  --tabbar-h:   46px;
+  --govbar-h:   32px;
+  --gutter:     28px;
+  --gutter-sm:  18px;
+
+  /* ── Z-index ─────────────────────────────────────────────── */
+  --z-below:    -1;
+  --z-base:      0;
+  --z-raised:    10;
+  --z-dropdown:  100;
+  --z-sticky:    200;
+  --z-overlay:   300;
+  --z-modal:     400;
+  --z-toast:     500;
+  --z-top:       999;
+}
