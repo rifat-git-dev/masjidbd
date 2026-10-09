@@ -195,9 +195,91 @@
   </div>
   <div class="tab-page"        id="page-wall"></div>
   <div class="tab-page"        id="page-donate"></div>
-  <div class="tab-page"        id="page-features"></div>
-  <div class="tab-page"        id="page-govt"></div>
-  <div class="tab-page"        id="page-register"></div>
+  <div class="tab-page"        id="page-features">
+    <div style="padding:2rem;max-width:860px;margin:0 auto">
+      <h1 style="font-size:2rem;margin-bottom:1rem">⚡ Platform Features</h1>
+      <p style="color:var(--c-text-muted);margin-bottom:2rem">Everything MasjidBD offers for mosques, communities and government across Bangladesh.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem">
+        <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:12px;padding:1.5rem">
+          <div style="font-size:2rem;margin-bottom:.5rem">🕌</div><h3>Mosque Directory</h3><p style="color:var(--c-text-muted);font-size:.9rem">All mosques in Bangladesh searchable by location, district and facilities.</p>
+        </div>
+        <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:12px;padding:1.5rem">
+          <div style="font-size:2rem;margin-bottom:.5rem">🕐</div><h3>Prayer Times</h3><p style="color:var(--c-text-muted);font-size:.9rem">Accurate prayer times for all 64 districts with live countdown and iqamah schedules.</p>
+        </div>
+        <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:12px;padding:1.5rem">
+          <div style="font-size:2rem;margin-bottom:.5rem">💚</div><h3>Donation Platform</h3><p style="color:var(--c-text-muted);font-size:.9rem">Transparent fundraising for mosque renovation, relief and education campaigns.</p>
+        </div>
+        <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:12px;padding:1.5rem">
+          <div style="font-size:2rem;margin-bottom:.5rem">📊</div><h3>Role-Based Dashboard</h3><p style="color:var(--c-text-muted);font-size:.9rem">Dedicated portals for members, imams, volunteers, finance officers, admins and government.</p>
+        </div>
+        <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:12px;padding:1.5rem">
+          <div style="font-size:2rem;margin-bottom:.5rem">🗺️</div><h3>Interactive Map</h3><p style="color:var(--c-text-muted);font-size:.9rem">Leaflet-powered map showing all mosques with filters by district and facilities.</p>
+        </div>
+        <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:12px;padding:1.5rem">
+          <div style="font-size:2rem;margin-bottom:.5rem">🤖</div><h3>MasjidBot AI</h3><p style="color:var(--c-text-muted);font-size:.9rem">AI assistant powered by Gemini for Islamic Q&A, prayer guidance and community support.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-page"        id="page-govt">
+    <div style="padding:2rem;max-width:860px;margin:0 auto">
+      <h1 style="font-size:2rem;margin-bottom:1rem">🏛️ Government Portal</h1>
+      <p style="color:var(--c-text-muted);margin-bottom:2rem">Official portal for Ministry of Religious Affairs and district government officers managing mosque oversight.</p>
+      <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:12px;padding:1.5rem;margin-bottom:1rem">
+        <h3>📋 Mosque Registration Status</h3>
+        <p style="color:var(--c-text-muted);font-size:.9rem;margin-top:.5rem">View and approve mosque registration applications from all 64 districts. Currently <strong>12 pending</strong> applications.</p>
+        <button class="btn btn-primary btn-sm" style="margin-top:1rem" onclick="goTo('dashboard')">Open Dashboard →</button>
+      </div>
+      <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:12px;padding:1.5rem;margin-bottom:1rem">
+        <h3>📊 National Statistics</h3>
+        <p style="color:var(--c-text-muted);font-size:.9rem;margin-top:.5rem">Aggregate data on mosque attendance, fund utilisation and community programs across Bangladesh.</p>
+      </div>
+      <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:12px;padding:1.5rem">
+        <h3>🔐 Government Login</h3>
+        <p style="color:var(--c-text-muted);font-size:.9rem;margin-top:.5rem">Authorised Ministry of Religious Affairs officers log in with their government credentials.</p>
+        <button class="btn btn-primary btn-sm" style="margin-top:1rem" onclick="goTo('dashboard')">Login via Dashboard →</button>
+      </div>
+    </div>
+  </div>
+  <div class="tab-page"        id="page-register">
+    <div style="padding:2rem;max-width:620px;margin:0 auto">
+      <h1 style="font-size:2rem;margin-bottom:.5rem">🕌 Register Your Mosque</h1>
+      <p style="color:var(--c-text-muted);margin-bottom:2rem">Add your mosque to Bangladesh's national directory. Free for all mosques.</p>
+      <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:12px;padding:1.5rem">
+        <div style="display:flex;flex-direction:column;gap:1rem">
+          <div>
+            <label style="font-size:.85rem;font-weight:600;display:block;margin-bottom:.35rem">Mosque Name</label>
+            <input type="text" placeholder="e.g. Baitul Mukarram Mosque" style="width:100%;padding:.65rem .9rem;border:1px solid var(--c-border);border-radius:8px;background:var(--c-bg);color:var(--c-text);font-size:.95rem;box-sizing:border-box" />
+          </div>
+          <div>
+            <label style="font-size:.85rem;font-weight:600;display:block;margin-bottom:.35rem">District</label>
+            <select style="width:100%;padding:.65rem .9rem;border:1px solid var(--c-border);border-radius:8px;background:var(--c-bg);color:var(--c-text);font-size:.95rem">
+              <option value="">Select district…</option>
+              <option>Dhaka</option><option>Chittagong</option><option>Sylhet</option>
+              <option>Rajshahi</option><option>Khulna</option><option>Barisal</option>
+              <option>Rangpur</option><option>Mymensingh</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:.85rem;font-weight:600;display:block;margin-bottom:.35rem">Address</label>
+            <input type="text" placeholder="Street address" style="width:100%;padding:.65rem .9rem;border:1px solid var(--c-border);border-radius:8px;background:var(--c-bg);color:var(--c-text);font-size:.95rem;box-sizing:border-box" />
+          </div>
+          <div>
+            <label style="font-size:.85rem;font-weight:600;display:block;margin-bottom:.35rem">Imam Contact Number</label>
+            <input type="tel" placeholder="+880 ..." style="width:100%;padding:.65rem .9rem;border:1px solid var(--c-border);border-radius:8px;background:var(--c-bg);color:var(--c-text);font-size:.95rem;box-sizing:border-box" />
+          </div>
+          <div>
+            <label style="font-size:.85rem;font-weight:600;display:block;margin-bottom:.35rem">Mosque Capacity</label>
+            <input type="number" placeholder="e.g. 500" style="width:100%;padding:.65rem .9rem;border:1px solid var(--c-border);border-radius:8px;background:var(--c-bg);color:var(--c-text);font-size:.95rem;box-sizing:border-box" />
+          </div>
+          <button class="btn btn-primary" style="width:100%;padding:.8rem" onclick="alert('Registration submitted! Our team will verify and add your mosque within 48 hours. JazakAllah Khair! 🌙')">
+            Submit Registration 🕌
+          </button>
+          <p style="font-size:.8rem;color:var(--c-text-muted);text-align:center">Registration is free. Your mosque will appear on the map and directory after verification.</p>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="tab-page"        id="page-dashboard"></div>
   <div class="tab-page"        id="page-calendar"></div>
 </main>
